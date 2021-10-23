@@ -3,7 +3,7 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background: offwhite;
+    /*background: offwhite;*/
 }
 
 code {
@@ -96,7 +96,7 @@ button, .button {
     font-size: 15px;
     color: red;
     transition: all 0.2s;
-    box-sizing: padding-box;
+    /*box-sizing: padding-box;*/
 }
 
     button:hover, .button:hover, button:focus, .button:focus {
@@ -114,8 +114,8 @@ button, .button {
     padding: 15px;
     color: #FFFFFF;
     font-size: 14px;
-    -webkit-transition: all 0.3 ease;
-    transition: all 0.3 ease;
+    /*-webkit-transition: all 0.3 ease;*/
+    /*transition: all 0.3 ease;*/
     cursor: pointer;
 }
 
