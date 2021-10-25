@@ -4,7 +4,8 @@ import Photogallery from "./components/PhotoGallery";
 import NewPhoto from "./components/NewPhoto";
 import {Route} from 'react-router-dom';
 
-class Main extends Component{
+//Used to be 'Main'
+class App extends Component{
     constructor() {
         super();
 
@@ -32,7 +33,7 @@ class Main extends Component{
              {
                 id: 4,
                 description: "#Tartu2024",
-                imageLink: "http://bnn-news.com/wp-content/uploads/2019/08/1KT26AUG19I3.jpg"
+                 imageLink: "https://bnn-news.com/wp-content/uploads/2019/08/1KT26AUG19I3.jpg"
              }],
              //Sample for another "state"
              page : 'main'
@@ -139,4 +140,4 @@ class Main extends Component{
     }
 }
 
-export default Main;
+export default App;

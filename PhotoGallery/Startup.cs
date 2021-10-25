@@ -63,6 +63,7 @@ namespace PhotoGallery
 
                 if (env.IsDevelopment())
                 {
+                    spa.Options.StartupTimeout = System.TimeSpan.FromSeconds(120);
                     spa.UseReactDevelopmentServer(npmScript: "start");
                 }
             });
