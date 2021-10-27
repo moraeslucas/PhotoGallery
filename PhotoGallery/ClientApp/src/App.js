@@ -17,23 +17,18 @@ class App extends Component{
              }, 
              {
                 id: 1,
-                description: "Winter Time!",
-                imageLink: "https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F613cc7bad595060ded168985%2FTallinn-city--Estonia--Snow-on-trees-in-winter-%2F960x0.jpg%3Ffit%3Dscale"
-             }, 
-             {
-                id: 2,
                 description: "Tallinn's New Town",
                 imageLink: "https://www.usnews.com/dims4/USNEWS/298201f/2147483647/thumbnail/640x420/quality/85/?url=http%3A%2F%2Fmedia.beam.usnews.com%2F76%2F01%2Fbe89becd4c94a7f803eef2aac78e%2F180205-editorial.bc.estonia.eresidency_main.jpg"
              },
              {
-                id: 3,
-                description: "Tartu at night",
-                imageLink: "https://upload.wikimedia.org/wikipedia/commons/9/98/Tartu_at_night_-_panoramio.jpg"
+                id: 2,
+                 description: "#Tartu2024",
+                 imageLink: "https://bnn-news.com/wp-content/uploads/2019/08/1KT26AUG19I3.jpg"
              }, 
              {
-                id: 4,
-                description: "#Tartu2024",
-                 imageLink: "https://bnn-news.com/wp-content/uploads/2019/08/1KT26AUG19I3.jpg"
+                id: 3,
+                 description: "Winter Time!",
+                 imageLink: "https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F613cc7bad595060ded168985%2FTallinn-city--Estonia--Snow-on-trees-in-winter-%2F960x0.jpg%3Ffit%3Dscale"
              }],
              //Sample for another "state"
              page : 'main'
@@ -55,7 +50,7 @@ class App extends Component{
     }
 
     deletePhoto(postDeleted) {
-        /** 
+        /**
          * -'setState' enqueues changes to the component state and tells React to re-render it
          * 
          * -It uses parenthesis '()' in the arrow function (which returns an object)
@@ -65,6 +60,12 @@ class App extends Component{
             //'filter' returns the array elements that meet the condition specified.
             myPosts : mainState.myPosts.filter((post) => post !== postDeleted)
         }));
+
+        //A way of doing this with return
+        //this.setState((mainState) => {
+        //    //'filter' returns the array elements that meet the condition specified.
+        //    return { myPosts: mainState.myPosts.filter((post) => post !== postDeleted) }
+        //});
 
         //Another way of doing it
         //this.setState((mainState) => 
