@@ -28,7 +28,7 @@ class App extends Component{
              {
                 id: 3,
                  description: "Winter Time!",
-                 imageLink: "https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fspecials-images.forbesimg.com%2Fimageserve%2F613cc7bad595060ded168985%2FTallinn-city--Estonia--Snow-on-trees-in-winter-%2F960x0.jpg%3Ffit%3Dscale"
+                 imageLink: "https://media-cdn.tripadvisor.com/media/photo-s/07/25/39/7d/estonian-experience.jpg"
              }],
              //Sample for another "state"
              page : 'main'

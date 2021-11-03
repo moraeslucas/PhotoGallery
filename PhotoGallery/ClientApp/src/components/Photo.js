@@ -11,7 +11,11 @@ function Photo(props) {
                         <p>{photo.description}</p>
                     </figcaption>
                     <div className= "button-container">
-                        <button onClick = {() => props.onDeletePhoto(photo)}>
+                    <button onClick={() => {
+                            if (window.confirm('Are you sure you wish to delete this photo?'))
+                                props.onDeletePhoto(photo)
+                        }
+                    }>
                             Delete
                         </button>
                     </div>
