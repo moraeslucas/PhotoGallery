@@ -1,20 +1,21 @@
 import React from 'react';
 import Photo from "./Photo";
 import PropTypes from "prop-types";
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Photogallery(props){
     return (
         <div>
-            {/* <button className="addIcon" onClick={props.onNavigation}></button> */}
             <Link className="addIcon" to="/NewPhoto" />
+            {/* <button className="addIcon" onClick={props.onNavigation}></button> */}
+
             <div className="photo-grid">
                 {/* This sorts the array in descending order */}
                 {props.posts
-                    .sort((a, b) => b.id - a.id)
-                    .map((post) => <Photo key = {post.id}
-                                                 photo = {post}
-                                                 onDeletePhoto = {props.onDeletePhoto} />)}
+                      .sort((a, b) => b.photoId - a.photoId)
+                      .map((post) => <Photo key = {post.photoId}
+                                            photo = {post}
+                                            onDeletePhoto = {props.onDeletePhoto} />)}
             </div>
         </div>
     );
