@@ -1,7 +1,8 @@
-//import { Component } from "react/cjs/react.production.min";
 import React, { Component } from 'react';
 
+/*This could be a Function, but it's a class to serve as a contrast to EditPhoto*/
 class NewPhoto extends Component{
+    //'props' aren not avaible at "constructor time"
     constructor() {
         super();
 
@@ -30,20 +31,18 @@ class NewPhoto extends Component{
         }
 
         const newPost = {
-            id: Number(new Date()),
             description: description,
             imageLink: link
         }
 
-        if (link && description){
-            this.props.onNewPhoto(newPost);
-        }
+        this.props.onNewPhoto(newPost);
     }
     
     render (){
         return (
             <div>
                 <h1>Photogallery</h1>
+                <h2>(Create)</h2>
                 <div className="form">
                     <form onSubmit={this.handleSubmit}>
                         <input type="text" placeholder="Link" name="link" />

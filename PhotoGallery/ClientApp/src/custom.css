@@ -23,7 +23,6 @@ p {
 h1 {
     font-family: billabong, 'billabongregular';
     text-align: center;
-    font-weight: 70;
     font-size: 8rem;
     margin: 2rem 0 -4px 0;
     letter-spacing: -1px;
@@ -39,6 +38,13 @@ h1 {
         h1 a:focus {
             outline: 0;
         }
+
+h2 {
+    font-family: billabong, 'billabongregular';
+    text-align: center;
+    font-size: 3.5rem;
+    margin: 0.3rem 0 -4px 0;
+}
 
 span {
     font-size: 15px;
@@ -56,8 +62,8 @@ span {
 .photo-grid {
     display: flex; /*It enables a flex context for all its direct children.*/
     flex-wrap: wrap;
-    max-width: 483px;
-    min-width: 483px;
+    max-width: 500px;
+    min-width: 500px;
     margin: auto;
 }
 
@@ -82,12 +88,38 @@ figure figcaption {
     max-width: none;
 }
 
+.divider {
+    width: 15px;
+    height: auto;
+    display: inline-block;
+}
+
 .button-container {
-    margin: 0 auto;
+    margin: 0 auto -6px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
+.button-edit {
+    border: 2px solid #00b9ff;
+    background: none;
+    flex-basis: 48%;
+    display: inline-block;
+    line-height: 2;
+    text-decoration: none;
+    padding: 5px;
+    text-align: center;
+    font-size: 15px;
+    color: blue;
+    transition: all 0.2s;
+    /*box-sizing: padding-box;*/
+}
+
+    .button-edit:hover, .button-edit:focus {
+        border-color: blue;
+        outline: 0;
+    }
 
 button, .button {
     border: 2px solid #ffaaaa;

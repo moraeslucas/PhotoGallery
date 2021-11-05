@@ -230,3 +230,4 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+PhotoGallery/Properties/ServiceDependencies/PhotoGalleryR1 - Zip Deploy/profile.arm.json
