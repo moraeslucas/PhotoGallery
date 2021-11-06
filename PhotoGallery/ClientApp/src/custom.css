@@ -69,7 +69,7 @@ span {
 
 .figure {
     flex-basis: calc(52% - 5.5rem);
-    border: 1px solid #d3d3d3;
+    border: 2px solid #dcdada;
     padding: 2rem;
     flex-grow: 0;
     margin: 0rem 0rem 2rem 2.5rem;
@@ -94,6 +94,11 @@ figure figcaption {
     display: inline-block;
 }
 
+.load-more {
+    text-align: center;
+    margin: 2px 0 0 -15px;
+}
+
 .button-container {
     margin: 0 auto -6px;
     display: flex;
@@ -101,43 +106,50 @@ figure figcaption {
     justify-content: center;
 }
 
-.button-edit {
-    border: 2px solid #00b9ff;
-    background: none;
+.button-load {
+    border: 2px solid black;
     flex-basis: 48%;
-    display: inline-block;
-    line-height: 2;
-    text-decoration: none;
-    padding: 5px;
-    text-align: center;
     font-size: 15px;
-    color: blue;
-    transition: all 0.2s;
-    /*box-sizing: padding-box;*/
+    color: black;
+    font-weight: bold;
 }
 
-    .button-edit:hover, .button-edit:focus {
-        border-color: blue;
-        outline: 0;
+    .button-load:hover {
+        background-color: black;
     }
 
+.button-edit {
+    border: 1px solid blue;
+    color: blue;
+}
+
+    .button-edit:hover {
+        background-color: blue;
+    }
+
+/*This is the standard button, and it's the  default for Delete*/
 button, .button {
-    border: 2px solid #ffaaaa;
+    border: 1px solid red;
     background: none;
-    flex-basis: 48%;
+    flex-basis: 34%;
     display: inline-block;
     line-height: 2;
     text-decoration: none;
     padding: 5px;
     text-align: center;
-    font-size: 15px;
+    font-size: 13px;
     color: red;
     transition: all 0.2s;
     /*box-sizing: padding-box;*/
 }
 
-    button:hover, .button:hover, button:focus, .button:focus {
-        border-color: red;
+    button:hover, .button:hover {
+        background-color: red;
+        color: white;
+    }
+
+    button:focus, .button:focus {
+        /*draws a line around the outside of an element*/
         outline: 0;
     }
 
@@ -159,6 +171,21 @@ button, .button {
     .form button:hover, .form button:active, .form button:focus {
         background: rgb(12, 8, 241);
     }
+
+select {
+    border: 2px solid black;
+    height: 44px;
+    flex-basis: 48%;
+    /*display: inline-block;*/
+    line-height: 2;
+    padding: 5px;
+    text-align: center;
+    font-size: 15px;
+    color: black;
+    font-weight: bold;
+    transition: all 0.2s;
+    /*box-sizing: padding-box;*/
+}
 
 .figure .single-photo {
     flex-basis: calc(33.333% - 4rem);

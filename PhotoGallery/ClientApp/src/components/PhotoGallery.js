@@ -10,9 +10,9 @@ function Photogallery(props){
             {/* <button className="addIcon" onClick={props.onNavigation}></button> */}
 
             <div className="photo-grid">
-                {/* This sorts the array in descending order */}
+                {/* Example which sorts the array in descending order */}
                 {props.posts
-                      .sort((a, b) => b.photoId - a.photoId)
+                      .sort((a, b) => b.timestamp - a.timestamp)
                       .map((post) => <Photo key = {post.photoId}
                                             photo = {post}
                                             onDeletePhoto = {props.onDeletePhoto} />)}
