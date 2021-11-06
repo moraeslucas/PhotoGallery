@@ -7,21 +7,23 @@ function Photo(props) {
         const history = useHistory();
 
         return (
-                <figure className="figure">
+            <figure className="figure">
                     <img className="photo" src={photo.imageLink} alt={photo.description} />
 
                     <figcaption>
                         <p>{photo.description}</p>
                     </figcaption>
                     
-                <div className="button-container">
+                    <div className="button-container">
                         <button className="button-edit"
                         onClick={() =>
                             history.push(`/EditPhoto/?id=${photo.photoId}`)
                         }>
                             Edit
                         </button>
+
                         <div className="divider" />
+                        
                         <button onClick={() => {
                                 if (window.confirm('Are you sure you wish to delete this photo?'))
                                     props.onDeletePhoto(photo)
@@ -30,7 +32,7 @@ function Photo(props) {
                             Delete
                         </button>
                     </div>
-                </figure>
+            </figure>
         );
 }
 

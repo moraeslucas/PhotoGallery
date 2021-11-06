@@ -5,6 +5,7 @@ import NewPhoto from "./components/NewPhoto";
 import EditPhoto from "./components/EditPhoto";
 import { Route } from 'react-router-dom';
 import axios from 'axios';
+import LoadMore from "./components/LoadMore";
 
 class App extends Component{
 
@@ -13,46 +14,38 @@ class App extends Component{
 
         //#region state declaration
         this.state = {
-            myPosts : [{
-                photoId: 0,
-                imageLink: "https://static.euronews.com/articles/stories/05/85/91/80/1440x810_cmsv2_db0d87d0-0896-5d43-b056-468d484edcc4-5859180.jpg",
-                description: "Old town in Tallinn",
-                timestamp: "2021 - 10 - 10T11: 29: 46"
-             }, 
-             {
-                photoId: 1,
-                imageLink: "https://www.usnews.com/dims4/USNEWS/298201f/2147483647/thumbnail/640x420/quality/85/?url=http%3A%2F%2Fmedia.beam.usnews.com%2F76%2F01%2Fbe89becd4c94a7f803eef2aac78e%2F180205-editorial.bc.estonia.eresidency_main.jpg",
-                description: "Tallinn's New Town",
-                timestamp: "2021 - 10 - 30T11: 29: 46"
-             },
-             {
-                photoId: 2,
-                imageLink: "https://bnn-news.com/wp-content/uploads/2019/08/1KT26AUG19I3.jpg",
-                description: "#Tartu2024",
-                timestamp: "2021 - 10 - 20T11: 29: 46"
-             }, 
-             {
-                photoId: 3,
-                imageLink: "https://media-cdn.tripadvisor.com/media/photo-s/07/25/39/7d/estonian-experience.jpg",
-                description: "Winter Time!",
-                timestamp: "2021 - 10 - 10T11: 29: 46"
-             }],
-            //Sample for another "state"
-            page: 'app'
+            myPosts : [],
+
+            loadNumber: '2',
+
+            /*Sample for another "state"*/
+            //page: 'app'
         };
         //#endregion
 
-        //These bindings are necessary to make them work in the callback
+        //These bindings are necessary to make state work in the callback
+        this.fetchData = this.fetchData.bind(this);
         this.deletePhoto = this.deletePhoto.bind(this);
+        this.handleNumber = this.handleNumber.bind(this);
+        this.refreshPage = this.refreshPage.bind(this);
         //this.navigation = this.navigation.bind(this);
     }
 
-    fetchData(){
-        axios.get(this.props.environment)
+    fetchData(loadNumber) {
+        axios.get(this.props.environment + "?skip=" + this.state.myPosts.length +
+                                           "&rowsNumber=" + loadNumber)
             .then((json) => {
-                this.setState({
-                    myPosts: json.data
-                });
+                if (json.data.length > 0) {
+                    this.setState({
+                        myPosts: this.state.myPosts.concat(json.data)
+                    });
+                }
+                else {
+                    alert(`There're no Photos to Load right now`);
+                }
+
+                //Sample for showing object on the console
+                console.dir(json.data.length);
             })
             .catch(function (error) {
                 //This catch is exectuded in case of 404 status code
@@ -68,6 +61,11 @@ class App extends Component{
         })
             .then(() => {
                 alert("Photo saved successfully");
+
+                this.state.myPosts.push({
+                    undefined //Populated by "fetchData" inside refreshPage (next instruction)
+                });
+
                 this.refreshPage(history);
             });
 
@@ -83,6 +81,7 @@ class App extends Component{
         )
             .then(() => {
                 alert("Photo updated successfully");
+
                 this.refreshPage(history);
             });
 
@@ -126,10 +125,24 @@ class App extends Component{
 
     //By default, it redirects to the root page
     refreshPage(history = null, redirectTo = '/') {
-        if (history !== null)
+        let auxLoadNumber;
+
+        auxLoadNumber = this.state.myPosts.length;
+        this.setState({
+            myPosts: [] //This way, it won't skyp any records
+        });
+
+        if (history != null)
             history.push(redirectTo);
-        
-        window.location.reload();
+
+        this.fetchData(auxLoadNumber);
+        //window.location.reload();
+    }
+
+    handleNumber(event) {
+        this.setState({
+            loadNumber: event.target.value
+        });
     }
 
     /*Sample for concise 'setState'*/
@@ -139,8 +152,8 @@ class App extends Component{
     //    })
     //}
 
-    componentDidMount(){
-        this.fetchData();
+    componentDidMount() {
+        this.fetchData(this.state.loadNumber);
 
         /*Solution with array*/
         // const posts = fetchData();
@@ -150,8 +163,11 @@ class App extends Component{
     }
 
     componentDidUpdate(prevProps, prevState){
-        console.log('Array value: ', prevState);
-        console.log('Table value:', this.state);
+
+
+        /*Sample for comparing the current state with the previous*/
+        //console.log('Array value: ', prevState);
+        //console.log('Table value:', this.state);
     }
 
     //#region Inline if with Logical && Operator
@@ -174,17 +190,21 @@ class App extends Component{
     render() {
         return (
             <React.StrictMode>
-                    
+
             <Route exact path = "/" render={() => (
                 <div>
                     <Header title = {this.props.title} />
-                
+
                     <Photogallery posts = {this.state.myPosts} 
                                   onDeletePhoto={this.deletePhoto} />
-                               {/*onNavigation = {this.navigation}*/} 
-                </div>    
+                                  {/*onNavigation = {this.navigation}*/}
+
+                    <LoadMore loadNumber={this.state.loadNumber}
+                              onHandleNumber={this.handleNumber}
+                              onFetchData={this.fetchData} />
+                </div>
             )}/>
-            
+
             {/* Curly braces '{' for history because it needs to be passed as an Object */}
             <Route path ="/NewPhoto" render= {({history}) => 
                 /*-It uses arrow function because NewPhoto is a class
@@ -204,7 +224,7 @@ class App extends Component{
                 />
             } />
 
-            {/* <Route path ="/NewPhoto" component={NewPhoto}/> */}
+            {/*<Route path ="/NewPhoto" component={NewPhoto}/>*/}
 
             </React.StrictMode>
         );
