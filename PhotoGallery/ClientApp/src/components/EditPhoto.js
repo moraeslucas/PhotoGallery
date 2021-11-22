@@ -60,7 +60,7 @@ export default function EditPhoto(props) {
             photoId: params.id,
             imageLink: link,
             description: description,
-            timestamp: new Date()
+            rowVersion: params.row
         }
 
         props.onEditPhoto(postEditted);
