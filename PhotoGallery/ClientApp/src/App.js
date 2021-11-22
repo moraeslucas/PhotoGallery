@@ -56,8 +56,7 @@ class App extends Component{
     addPhoto(postAdded, history){
         axios.post(this.props.environment, {
             imageLink: postAdded.imageLink,
-            description: postAdded.description,
-            timestamp: new Date()
+            description: postAdded.description
         })
             .then(() => {
                 alert("Photo saved successfully");

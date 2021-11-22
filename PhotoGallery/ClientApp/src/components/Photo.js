@@ -17,7 +17,9 @@ function Photo(props) {
                     <div className="button-container">
                         <button className="button-edit"
                         onClick={() =>
-                            history.push(`/EditPhoto/?id=${photo.photoId}`)
+                            /*Encodes the 2nd parameter, so characters like '+' won't be
+                              decoded to '%2B' by queryString.parse (located on EditPhoto)*/
+                            history.push(`/EditPhoto/?id=${photo.photoId}&row=${encodeURIComponent(photo.rowVersion)}`)
                         }>
                             Edit
                         </button>
